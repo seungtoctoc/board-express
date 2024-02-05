@@ -5,16 +5,17 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require("mongoose");
 const cors = require('cors');
-
+const dotenv = require('dotenv')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 // customize
 const commentRouter = require('./routes/comment');
+dotenv.config();
 
 mongoose
   .connect(
-    "",
+    process.env.MONGGO_CONNECT,
     {'w': 'majority',
     retryWrites: true}
   )
