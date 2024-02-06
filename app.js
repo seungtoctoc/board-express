@@ -10,14 +10,17 @@ const dotenv = require('dotenv')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 // customize
-const commentRouter = require('./routes/comment');
+const todoRouter = require('./routes/todo');
 dotenv.config();
 
 mongoose
   .connect(
     process.env.MONGGO_CONNECT,
-    {'w': 'majority',
-    retryWrites: true}
+    {
+      'w': 'majority',
+      retryWrites: true,
+      dbName: 'todo'
+    }
   )
   .then(() => 
     console.log("db connected")
@@ -46,7 +49,7 @@ app.use(cors());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 // customize
-app.use('/comment', commentRouter);
+app.use('/todo', todoRouter);
 
 
 

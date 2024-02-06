@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const commentSchema = new mongoose.Schema({
+const todoSchema = new mongoose.Schema({
     writer: {
         type: String,
         require: true
@@ -9,12 +9,16 @@ const commentSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    color: {
+        type: Number,
+        require: true
+    },
     createdAt: {
         type: Date,
         default: Date.now
     }
 });
 
-const Comment = mongoose.model("new-Comment", commentSchema);
+const Todo = mongoose.model("Todo", todoSchema);
 
-module.exports = Comment;
+module.exports = Todo;
